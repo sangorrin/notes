@@ -1,0 +1,480 @@
+Amateur RF 4th-level notes
+2015 (c) Daniel Sangorrin <daniel.sangorrin@gmail.com>
+------------------------------------------------------------------------------
+
+Engineering
+===========
+
+Transmission
+------------
+
+VOX (SSB Tx): Voice Operated Transmission
+    - If no voice being transmitted, stop the tx from consuming power
+
+ALC (SSB Tx): Automatic Level Control
+    - Attenuates hizumi before entering the Power amplifer 
+
+Speech clipper (SSB Tx): clips the amplified voice, before the modulator.
+
+IDC (FM Tx): Instantaneous Deviation Control
+    - Limits the maximum deviation of the FM transmitter (like the speech clipper)
+
+AFC (FM Tx): Automatic Frequency Control
+    - used to stabilize the freq of the oscillator when using a LC instead of
+      a crystal.
+
+Reception
+---------
+
+IFT (DSB Rx): Intermediate Frequency Transformer
+    - LC band pass filter that comes with the IF amplifier of the DSB 
+      superheterodine (2-phases) receiver.
+    - Can be improved by adding a BPF (band pass filter) made of crystal.
+
+AGC (DSB Rx): Automatic Gain Control (for PHASING!)
+    - On the DSB receiver depending on the power of the received signal
+      the sound volume will vary
+    - AGC is used to automatically control the gain of the IF amplifier
+      so that the sound volume is always the same.
+
+Amplitude limiter (FM Rx): limits the amplitud of the received wave. It goes
+                           after the intermediate amplifier.
+
+Skelch circuit (FM Rx): remove speaker buzz if no signal received
+
+BFO (CW/A1A=Morse): Beat Frequency Oscillator
+    - Morse (on or off) --> BFO --> detector --> speaker
+    - Used to receive morse
+
+RIT or clarifier (SSB Rx): Receiving Incremental Tuning
+    - used to clarify 明りょう度 the sound heard in the speaker
+    - it tunes the frequency of the local oscillator of the mixer 
+      周波数変換部の局部発信器の発信周波数
+    - it has a knob <tsumami>
+
+Common
+------
+
+ANL: automatic noise limiter
+S meter: displays the strength of the received signal 
+    - Typically AGC voltage or Detector's current
+
+LAW
+===
+
+1.- Radio station <musen-kyoku or amateur-kyoku> license
+--------------------------------------------------------
+
+Definition of radio station
+    - The radio station equipment <musen-setsubi> + person that operates it
+      [Note] reception-only equipment (a radio, a TV tuner) are not considered
+
+Definition of amateur RF operations <amateur gyomu>
+    - Not for money
+    - Motivation: private interest on amateur RF technology <musen-gijutsu>
+    - Activities:
+        + self-training <jiko-kunren>
+        + communications
+        + technical research
+    [Note] learn it by heart!
+        金銭上の利益のためではなく、もっぱら個人的な無線技術の興味によって行う
+        自己訓練、通信及び技術研究の業務という。
+
+Procedure to start <kaisetsu> a radio station
+    - Apply for a radio station license!
+        + Including all documents necessary
+        + To: Regional Bureau of Telecommunications (総合通信局長)
+
+The 13 ITEMS written in the radio station license certificate (免許状)
+    Ref: page 134-135
+    - Items that require a <shinsei> for modification
+        + Date
+        + Name/Address of the licensee <menkyojin>
+        + License number 
+        + Valid period
+            -> Japanese: 5 years (免許の日から起算)
+            -> Foreigners: until the visa expires
+               [Note] the personal license <shuumin-menkyo> does not expire.
+            -> Renewal: 1 year before < OK < 1 month before expiration
+            -> Loose validity <kouryoku> (expire/quit): remove <tekkyo> the 
+               antenna quickly <chikoku nashi>
+        + Type of radio station
+        + Goal of radio station: アマチュア業務用
+    - Items that require "permission in advance" before modification
+        + Place for the radio equipment <musen-setsubi>
+        + Communications partner <aitekata>
+        + Communication items <tsuushin-jikkou>    
+    - Items that are re-assigned <shitei> on renewal
+        + Allowed radio formats <keishiki> and frequencies
+            -> Format:
+                - Type of modulation: 
+                    + DSB (A), SSB (H), SSB att (R), SSB no fc <yokuatsu> (J), 
+                    + FM (F)
+                - Channels and digital/analogue
+                    + 1: 1chan + digital + no fc
+                    + 2: 1chan + digital + with fc
+                    + 3: 1chan + analogue
+                - Type of data
+                    + E: voice, F: video, A: morse
+                    + B: telegraphy, C: fax, D: data
+                - [Opt] Details of tx info
+                    + G: mono
+                - [Opt] Type of multiplexing
+                    + F: freq division, T: time division, C: code division
+                - Main types:
+                    + A3E => BW=2*fs (fc-fs < fc < fc+fs)
+                    + H3E, R3E, J3E => BW=fs (fc < fc+fs)
+                    + F3E => BW=2*(fs+fdesv)
+                    + ATV (DSB for TV) => BW=2*fs=9MHz
+                    + A1A/CW (morse)
+            -> Frequency: 2M50 = 2.5MHz
+        + Call sign <shikibetsu-shingo or yobidashi-juugo> (TOMO: JP1TYA)
+        + Maximum antenna power　<kuchuusen-denryoku>
+        + Permitted time of operation <unyou-kyouyou>
+
+Modifying items in the radio station license certificate
+    - Get permission before changing:
+        + Place for the radio equipment <musen-setsubi>
+        + Communications partner <aitekata>
+        + Communication items <tsuushin-jikkou>  
+        + Modifications to the radio equipment <musensetsubi-hennkou-no-kouji>
+            -> Small <keibi> modification: 
+                notify quickly <chikoku-nashi todokedasu>
+    - For other items
+        + Apply for the changes <shinsei>
+    - After the changes:
+        + Get the license certificate updated <teisei>
+    - Having a small vacation <unyou-kyujo> or quitting <haijo>: notify 
+        + when quitting, the radio station license looses validity <kouryoku> 
+            -> retire the antenna quickly!
+    - To: Minister for Internal Affairs and Communications (総務大臣 or 総務省)
+      To: Regional Bureau of Telecommunications (総合通信局長)
+
+2.- Radio equipment <musen-setsubi>
+-----------------------------------
+
+Definition of radio equipment <musen-setsubi>
+    - Electrical equipment for Tx or Rx radio-waves <-- Rx too!
+        + Radio communications <musen-tsuushin>
+        + Radio telephone <musen-denwa>
+            -> transmit voice <ongoe> or other sounds <onkyou>
+      [Note] 無線通信、無線電話その他電波を送り、又は受けるための電気的設備をいう
+
+Definition of transmitter equipment <soushin-setsubi>
+    - Transmission device  AND  transmission antenna
+        <soushin-souchi>       <soushin-kuuchuusen-kei>
+        + generate high-freq energy <koushuuha-energii>, which is then 
+          radiated <fukusha> by the antenna
+
+Quality of the transmitted radiowaves (defined by 総務省)
+    - Frequency deviation <shuuhasuu-no-hensa>
+    - Bandwidth <haba>
+    - Strength of the superior harmonics <kouchouha-no-kyoudo>
+    [Note] 送信設備に使用する電波の周波数の偏差及び幅、高調波の強度等電波の質は、
+           総務省令で定めるところに適合するものでなければならない。
+
+Stability of the frequency in the tx equipment
+    - To keep the frequencies under the allowed desviation values
+        + the oscillator circuit method <hasshin-kairo-no-hoshiki> shouldn't 
+          depend on:
+            -> Temperature changes
+            -> Humidity changes
+        + in case of portable amateur RF stations <idou-kyoku>
+            -> Vibrations or shocks
+    - The following should not affect the oscillator frequency
+        + Voltage supply <dengen-denatsu>
+        + The load <fuka>
+
+Requirements for the format <keishiki> and <kousei> of the tx antenna
+    - High gain <ritoku> and efficiency <nouritsu>
+    - Impedance matching <seigou>
+    - Good directional characteristics <shikou-tokusei>
+
+3.- Amateur RF operator <juujisha>
+----------------------------------
+
+Frequencies
+    VLF=3kHz..30kHz
+    LF=30kHz..300kHz
+    MF=300KHz..3MHz
+    HF=3MHz..30MHz
+    VHF=30MHz..300MHz
+    UHF=300MHz..3GHz
+    SHF=3GHz..30GHz
+
+Radio equipment's <musen-setsubi> antenna power and frequencies for 4th level
+    - 10Watt:  0..8MHz || 21MHz..30MHz 
+    - 20Watt:  >30MHz
+    - Not usable: 
+        + 10MHz, 14MHz, 18MHz
+        + A1A/CW (morse)
+
+Operator license <musen-juujisha-no-menkyo>
+    - can be denied if
+        + you broke the radio law and got a file <bakkin>, and have not 
+          passed 2 years since the enforcement　執行 <shikkou> was finished.
+        + your operator license was taken <torikesi> and haven't passed 2 years
+        + you are mentally or physically disabled for being an operator.
+
+Operator license card <menkyo-sho>
+    - the operator must carry it <keitai> whenever it is working
+    - renewal <saikoufu>
+        + needed when:
+            -> name change
+            -> gets broken, dirty or lost
+        + required docs: 
+            -> 1 photo
+            -> (only for name change) copy of the family registry 
+               <koseki-shouhon> or residence card <juuminhyo>
+            -> (unless lost) old card
+               [Note] if you find it return it before 10 days!
+    - if your operator license is removed <torikeshi>
+        + return your operator license card before 10 days!
+    - if the operator dies or is dissapeared 失そう <shissou>
+        + return 返納 <hennou> the operator license card to the 総合通信局長 
+          without delay!
+
+4.- Operation of the radio station
+----------------------------------
+
+Definition of interference <konshin>
+    - Discharge 発射 <hassha>, radiation 輻射 <fukusha> or induction 誘導
+      of radio waves that interfere 妨害 <bougai>, with other radio stations
+    - Prohibited, except in case of
+        + extraordinary <hijou-tsuushin>
+        + disaster 遭難 <sounan-tsuushin>
+        + safety <anzen-tsuushin>
+        + emergency　緊急 <kinkyuu-tsuushin>
+
+Operating outside the limits in the radio station license certificate 免許状
+    - prohibited <mokuteki-igai> to exceed
+        + goal of radio station: アマチュア業務用
+        + communications partner <aitekata>
+        + communication items <tsuushin-jikkou>
+    - exceptions
+        + extraordinary <hijou-tsuushin>
+        + reception-only
+        + defined by ministry: 
+            -> tests, tuning of equipment
+                - use a dummy antenna 擬似空中線回路　<giji-kuuchuusen-kairo> 
+            -> practice of extraordinary transmission
+    - must give observance 遵守 <junshu> to the items in the 免許状 
+      except disaster 遭難 <sounan-tsuushin>
+        + Place for the radio equipment <musen-setsubi>
+        + Call sign <shikibetsu-shingo or yobidashi-juugo> (TOMO: JP1TYA)
+        + Allowed radio formats <keishiki> and frequencies
+   - the output power must be below the one in the 免許状
+        + also, it must be the minimum necessary!!
+
+
+About secrecy
+    - You can't use methods to attach confidentiality 秘匿性 <hitokusei>
+        + 秘話 <hiwa> or 暗号 <ango>...
+    - Never leak or use without permission 窃用 <setsuyou> information 
+      intercepted 傍受 <bouju>
+        + except special cases defined in the law
+        [Mem] 何人も法律に別段の定めがある場合を除くほか、特定の相手方に対して行われる
+              無線通信を傍受してその存在若しくは内容を漏らし、又はそれを窃用してはならない
+
+Principles of radio communications <musen-tsuushin>
+    1) don't carry out unneeded communications
+    2) be brief 簡潔 <kanketsu> when using words 用語 <yougo> of radio comm.
+    3) tell your own radio station's call sign 自局の呼出符号
+    4) if you make a mistake in something that should be accurate 
+       正確に行うものとし <seikaku>, fix 訂正 <teisei> it immediately 
+       直ちに <tadachi-ni>!
+
+Before starting a call to a radio station 相手局
+    - tune the receiver for the best sensitivity
+    - listen carefully 聴守 to the frequencies that you are going to use
+    - make sure there are no other communications you could interfere with
+        + except in extraordinary cases <hijou-no-baai>
+
+Procedure for calling to a radio station
+    - 呼出事項
+        1) 3 times以下: his radio station call sign 相手局の呼出符号
+            + if calling the aitekata radio stations in your certificate
+                -> 3 times exactly
+                -> instead of their call signs, you can use 'CQ' + 相手局
+                   [Note] if you only use CQ then it's like a general call
+        2) 1 time: こちらは
+        3) 3 times以下: my radio station call sign 自局の呼出符号
+        4) 1 time: どうぞ
+            + only if you are calling the aitekata stations in your certificate
+    - Exceptions
+        + If 50Watt以下 and I know he will receive my signal, only 1) is fine.
+    - If nobody answers: wait at least 3 minutes
+    - If you are told to be interfering: quickly <tadachi ni> stop calling
+
+Procedure for answering 応答 <outou>
+    - 応答事項
+        1) 3 times以下: his radio station call sign 相手局の呼出符号
+        2) 1 time: こちらは
+        3) 1 time: my radio station call sign 自局の呼出符号
+        4) 1 time: どうぞ
+            + only if you want to receive the information quickly <tadachi ni>
+            + if you can't answer within the next 10 minutes:
+                -> "wait please" お待ちください + wait time (in minutes) + reason
+    - Exceptions
+        + If 50Watt以下 and I know he will receive my signal, 1) is not required
+    - If you are not sure whether you were called or not?
+        + wait until he calls again and you can confirm that you were called.
+    - If you are sure you were called, but couldn't understand by who?
+        + answer, and in 1) instead of his 呼出符号 (which you don't know) 
+          say 誰かこちらを呼びましたか
+
+Boletines informativos 通報
+    - Every 10 minutes say: こちらは + 自局の呼出符号
+        + if it wasn't amateru radio, it would be every 30 minutes
+    - Finishing: say "終わり"
+        + say <sayounara> when you finish 通信 (as opposed to 通報)
+    - Listeners: say 了解 or OK, if you received it correctly
+
+When you make a mistake while talking
+    - say 訂正 + restart with the last word not mistaken 
+      正しく送信した適当な語字から更に送信する
+
+Repeating something
+    - Ask someone to repeat something:
+        + 反復 <hanpuku> + what part 箇所
+    - Request <irai> someone to send you a boletin:
+        + YOU CAN'T!
+    - When repeating, say 反復 <hanpuku> before each letter/word or the 
+      complete sentence
+        [Mem] その通報の各通ごと又は１連続ごとに「反復」を前置するものとする
+
+Changing frequency while transmiting, after being asked to avoid interference
+    - Say <ryoukai> or OK, and change frequency quickly <tadachini>
+      [Mem] 了解またはOKを送信し、直ちに周波数を変更する
+      [Note] don't need to say to which frequency you're changing!
+
+Testing your equipment
+    0) Listen 聴守 that nobody is using that channel to avoid interferences
+    1) 3 times (exactly): ただいま試験中
+    2) 1 time: こちらは
+    3) 3 times (exactly): 自局の呼出符号
+    4) Wait for 1 minute, listening carefully 聴守
+    5) 1 time (< 10s): 本日は晴天なり or 自局の呼出符号
+
+Extraordinary situations 非常の場合
+    - Stablishing communication:
+        + say 3 times 非常 before the 呼出事項 or　応答事項
+    - If you listen 非常 while you are talking to someone
+        + stop your communications and monitor
+          [Mem] 混信を与える虞(osore)のある電波の発射を停止して傍受(bouju)
+                しなければならない
+    - If while you are transmitting 非常 communications, you restore cable
+        + promptly stop the 非常 ones
+          [Mem] 非常通信の取扱いを開始した後、有線通信の状態が復旧した場合は、
+                速やかにその取扱いを停止しなkればならない。
+
+Restrictions on the bandwidth when transmitting
+    - The bandwidth 周波数帯幅 you use must be adequate to the frequency band 
+      周波数帯 allowed
+      [Mem] アマチュア局においては、その発射の占有する周波数帯幅(freq bandwidth)に
+            含まれているいかなるエネルギーの発射も、その局が動作することを許された
+            周波数帯(freq band)から逸脱<itsudatsu>(deviate)してはならない
+
+If you interfere (or think so) with a radio station or TV/Radio broadcasting
+    - stop promptly <sumiyaka ni> transmitting at that frequency 
+        + except in
+            -> extraordinary <hijou-tsuushin>
+            -> disaster 遭難 <sounan-tsuushin>
+            -> safety <anzen-tsuushin>
+            -> emergency　緊急 <kinkyuu-tsuushin>
+        
+4.- 監督 arbitrage
+------------------
+
+If your transmission is found not to have good quality　質
+    - you will be ordered　命じる to stop temporarily 臨時に
+
+Temporary verifications 臨時検査
+    - what to verify?
+        + the quality or the antenna output power　空中線電力
+    - when to verify?
+        + when you have been ordered to fix your equipment
+        + after you have been ordered to stop temporarily
+        + after you tried to improve the quality
+
+If you violate　違反 the 法律・命令・処分 you can be ordered any of these:
+    - limit your antenna's output power
+    - limit the frequency bands you can use
+    - stop operating 運用の停止 (withing 3 months)
+
+Removal of your radio station license 無線局の免許の取り消し <torikeshi>
+    - when you use a ilegal way 不正な手段 to
+        + get the license
+        + obtain permission to change the place for the equipment
+        + obtain permission for construction
+        + change your format/freq/output-power/call-sign 
+
+Removal of your operator license 無線従事者の免許の取り消し and stop of operations 
+    - within 3 months!
+    - when you violate 違反 the 法律・命令・処分
+    - when you use some ilegal way 不正な手段 to get your license
+    - When you become significantly 著しく <ichijirushiku> mentally or 
+      physically unable to operate
+
+Reporting to the 総務大臣
+    - after you have done a extraordinary communication 非常通信
+    - if you see that some radio station violates　違反 the 法律・命令
+
+Payment of the radio station license
+    - within 30 days
+    - 300 yen/year
+
+5.- Operation documents
+-----------------------
+
+Where do you put the radio station license certificate　免許状
+    - near your transmission equipment, in an easy to see 見易い place 
+        + except if it is problematic
+    - may be asked to put a 証票 issued by the bureau in the tx device place
+        + if you use portable equipment leave it where it normally is 常置場所
+
+Fixing <teisei> your radio station license certificate　免許状
+    - When you change some of the items in the certificate, 
+      ask the 総務大臣 <soumu-daijin> to fix it 訂正を受ける
+
+Re-issue 再交付 of your radio station license certificate 免許状
+    - When: broken, lost, dirty, stolen, etc..
+    - What to do: send an application form　申請書 to the minister or bureau
+        + reason　理由
+        + license number　更新の番号
+        + 識別信号: 呼出符号 + 呼出名称
+        + The old certificate 遅刻なし (except if you lost it)
+
+Returning your radio station certificate 免許状の返納
+    - when: if its validity is over (within 1 month)
+    - reasons:
+        + You were ordered to stop 廃止 your radio station
+        + your radio station license period is over
+        + they removed your radio station license
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
