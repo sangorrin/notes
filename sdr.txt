@@ -1,0 +1,265 @@
+SDR: Software Defined Radio
+2015 (c) Daniel Sangorrin <daniel.sangorin@gmail.com>
+-------------------------------------------------------------------------------
+
+Equipment
+=========
+
+Ref: http://superkuh.com/rtlsdr.html
+
+Digital TV tuner: DVB-T+DAB+FM (990 yen, aliexpress)
+    - DVB-T: Digital Video Broadcasting - Terrestrial
+      Ref: https://en.wikipedia.org/wiki/DVB-T
+    - DAB: Digital Audio Broadcasting
+      Ref: https://en.wikipedia.org/wiki/Digital_Audio_Broadcasting
+    - FM: Frequency Modulation
+      Ref: https://en.wikipedia.org/wiki/FM_broadcasting
+
+$ dmesg
+  usb 1-1.1: dvb_usb_v2: 'Realtek RTL2832U reference design' successfully initialized and connected
+  usbcore: registered new interface driver dvb_usb_rtl28xxu
+
+$ lsusb
+  Bus 001 Device 005: ID 0bda:2838 Realtek Semiconductor Corp. RTL2838 DVB-T
+
+Specifications of Realtek RTL2832U
+    - Receiving freq range: 48.25~863.24MHz
+    - Samples:
+        + 8-bit I/Q samples
+        + Sample rate: about 2.56MS/s (theoretically 3.2 MS/s)
+    - Input terminal: 75 Ohm
+    - Bandwidth: 6/7/8 MHz (auto-select)
+
+GNU Radio/Osmocom
+=================
+
+Ref: https://gnuradio.org/redmine/projects/gnuradio/wiki/Hardware
+Ref: http://sdr.osmocom.org/trac/wiki/rtl-sdr
+Ref: http://d.hatena.ne.jp/NeoCat/20140402/1396406442
+
+RTL2832U is supported:
+    "These are USB dongles based on the Realtek RTL2832 which are designed for 
+     DAB/DVB/FM. They can be used as SDR receivers over a frequency range that 
+     extends beyond popular television frequencies. Further information is 
+     available from osmocom. GNU Radio integration is provided via gr-osmosdr 
+     or gr-baz."
+
+Try the default installation in Ubuntu 14.04:
+    $ sudo apt-get install gr-osmosdr gnuradio gqrx-sdr
+    $ sudo rmmod dvb_usb_rtl28xxu rtl2832 rtl2830
+        -> vi /etc/modprobe.d/no-rtl.conf
+            blacklist dvb_usb_rtl28xxu
+            blacklist e4000
+            blacklist rtl2830
+            blacklist rtl2832
+    -> DOESN'T WORK: we have to build from source (see below)
+
+Build GNU radio and related tools (including rtl-sdr and gr-osmocom):
+    Ref: http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource
+    $ wget http://www.sbrac.org/files/build-gnuradio
+    $ chmod a+x ./build-gnuradio
+    $ ./build-gnuradio
+        -> IT WORKS!
+
+Build gqrx (graphical spectrum analyzer)
+    $ git clone https://github.com/csete/gqrx.git gqrx.git
+    $ cd gqrx.git
+    $ mkdir build
+    $ cd build
+    $ qmake ..
+    $ make
+        -> IT WORKS!
+
+[Opt] Install libsdr and command tools (Ubuntu 14.04LTS 64bit):
+    $ sudo apt-get update
+    $ sudo apt-get build-dep rtl-sdr
+    $ git clone git://git.osmocom.org/rtl-sdr.git
+    $ cd rtl-sdr/
+    $ mkdir build
+    $ cd build
+    $ cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
+      [Alt] cmake ../
+    $ make
+    $ sudo make install
+    $ sudo ldconfig
+
+[Opt] Install gr-osmocom:
+    $ sudo apt-get build-dep gr-osmosdr
+    $ git clone git://git.osmocom.org/gr-osmosdr
+    $ cd gr-osmosdr/
+    $ git checkout gr3.6 <-- for gnuradio 3.6
+    $ mkdir build
+    $ cd build/
+    $ cmake ../
+    $ make
+    $ sudo make install
+    $ sudo ldconfig
+
+App list
+========
+
+Ref: http://sdr.osmocom.org/trac/wiki/GrOsmoSDR#KnownApps
+Ref: http://gnuradio.org/redmine/projects/gnuradio/wiki/HowToUse#Using-the-included-tools-and-utility-programs
+Ref: http://www.cgran.org/
+
+FM reception
+============
+
+FM frequencies in Tokyo and surroundings:
+    Ref: http://www.denpa-data.com/denpadata/fm/kanto.htm
+    Ref: http://radio-k.bird.to/hz/fm-ta2.html
+    Ref: http://radiotuner.jp/3_tokyo.html
+    - NHK: 82.5MHz (Tokyo)
+    - Tokyo FM: 80.0MHz (Tokyo)
+    - FM yokohama: 84.7MHz (Yokohama)
+    - Inter FM: 76.1MHz/89.7MHz (Tokyo) / 76.5MHz (Yokohama)
+    - 放送大学: 77.1MHz (Tokyo)
+    - J-WAVE: 81.3MHz (Tokyo)
+    - Bay FM: 78.0 (Chiba)
+    - Nack 5: 79.5 (Saitama)
+    - Radio city: 84.0 MHz (Tokyo)
+    - FM844: 84.4MHz (Tokyo)
+    
+Receive NHK FM with command tool:
+    $ rtl_fm -f 82.5e6 -M wbfm -s 200000 -r 48000 - | aplay -r 48k -f S16_LE
+        -f: frequency
+        -M: modulation
+        -s: sample rate
+        -r: resample rate
+
+Seeing the spectrum
+===================
+
+$ sudo apt-get install gqrx
+$ gqrx -r (-r is for resetting the settings)
+    Select frequency with the mouse's scrolling wheel
+    Input controls: check Hardware AGC (Automatic Gain Control)
+    Receiver options: WFM (Stereo), Filter shape (Normal), Filter width (Normal)
+    Audio: increase Gain as needed
+    -> click top left button to start the dsp!!
+
+[Note] for recording use gtk-recordmydesktop
+    Ref: http://askubuntu.com/questions/4428/how-to-create-a-screencast
+
+GNU radio companion
+===================
+
+Ref: http://blog.opensecurityresearch.com/2012/06/getting-started-with-gnu-radio-and-rtl.html
+
+See the spectrum of NHK FM (see gnuradio-spectrum-fm-nhk.png,grc):
+    - Draw: RTL-SDR Source(Freq:82.5M, Gain: auto):IN --> WX GUI FFT Sink(Average:ON, Peak hold:ON):OUT
+    - Build->Generate (creates a python file, you can just run it)
+    - Build->Execute
+        -> IT WORKS!
+
+See the spectrum while you listen:
+    Ref: https://gnuradio.org/redmine/projects/gnuradio/wiki/Guided_Tutorial_Hardware_Considerations/62
+    Ref: http://www.rtl-sdr.com/tutorial-creating-fm-receiver-gnuradio-rtl-sdr/
+    - See gnuradio-spectrum-and-listen-fm-nhk.png,grc
+    
+Aitendo FM mic kit (Mono)
+=========================
+
+Ref: http://www.aitendo.com/product/5329
+Ref: http://cba.sakura.ne.jp/kit01/kit_858.htm (very nice!)
+
+Kit name: AKIT-334 (Aitendo 200 yen when i bought it, new one is 395 yen)
+
+Schematic
+    Ref: http://aitendo3.sakura.ne.jp/aitendo_data/product_img/aitendo-kit/AKIT/AKIT-334/akit-334_sch.jpg
+    [Note] it's a png not a jpeg
+
+Components
+    Resistors (1/4W)
+        100Ω（R5）ｘ1
+        82Ω（R2）ｘ1
+        82KΩ（R4）ｘ1
+        15KΩ（R1）ｘ1
+        1.5KΩ（R3）ｘ1
+    Ceramic capacitors
+        [Note] I got 2x20pF and 2x10pF! :O
+        10pF（C1、C2、C5）ｘ3
+        20pF（C4）ｘ1
+        1000+pF（C7）ｘ1
+    Ceramic trimmer capactior
+        20ｐFｘ1
+    Electrolitic capacitor
+        1uF（C6、C8）x2
+    Transistors
+        S9018（T1）ｘ1
+        S9013（T2）ｘ1
+    Others:
+        switch with lockx1
+        condensor mic: SG9767（Q1）ｘ1 <-- solder leads by yourself!
+        battery box: T4-1ｘ1
+        PCB: 145.0x17.0x1.6mm
+        Air coil
+
+PCB/circuit fix
+    - Put the C2 capacitor (10pF) in parallel with the C3 trimmer (not series)
+    - PCB cut the track that joins two pins of the C3 trimmer
+
+Calculating the coil
+    - Resonant freq
+        Ref: http://www.daycounter.com/Calculators/LC-Resonance-Calculator.phtml
+        Ref: http://www.allaboutcircuits.com/textbook/alternating-current/chpt-6/parallel-tank-circuit-resonance/
+        Goal: 76~108MHz (LC resonant)
+        L: 109nH 
+        C: 20..40pF (C2 + C3, in parallel C2 being 20pF because of a mistake..)
+        Freq_rs = 1/(2*pi*sqrt(LC)) =  76.2MHz (C==40) ~ 108MHz (C==20)      
+    - Coil turns
+        Theoretical formula:
+            Ref: http://www.allaboutcircuits.com/textbook/direct-current/chpt-15/factors-affecting-inductance/
+            L = perm * (N^2 * Pi * R^2) / length
+            - More area -> more L
+            - More turns in the same length -> more L
+            - More length -> less L
+            - More premeability -> more L (air permeability = 1)
+        Example
+            109nF = 1 * (7^2 * pi * 2.4e−3^2) / 8e−3
+                -> 7 turns, 2.4mm radius, 8mm length
+                -> better check it with an LC meter (see below)
+        Diameter of wire trade off
+            + the smaller the more turns you can put in the same length
+            + but the less current that can go without burning it
+            + and the worst the mechanical stability (fix with a plastic core
+              and some glue?)
+
+Using the L/C meter LC200A for making the coil
+==============================================
+
+Power the L/C meter
+    - Power supply
+    - USB cable
+    - Batteries
+
+Press the L/C button:
+    - measurable range: 0.001uH-100mH
+        -> 0.001uH ~ 1uH tolerance: 5%
+        -> 1uH ~ 100mH tolerance: 1%
+    - goal: 0.217uH (0.206uH~0.228uH with tolerance)
+
+Calibrate
+    - Short circuite the testing leads
+    - Press the red button for 4 seconds until <DATA SAVED> appears
+    - The display should show 0uF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
