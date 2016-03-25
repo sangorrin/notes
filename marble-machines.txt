@@ -1,0 +1,206 @@
+﻿Marble machines
+2016 (c) Daniel Sangorrin <daniel.sangorrin@gmail.com>
+------------------------------------------------------------------------------
+
+Ref: https://www.youtube.com/user/denha
+Ref: https://www.youtube.com/user/skokan144
+
+Marble machine keywords:
+    - force, gravity, friction, work.
+    - lever, pulley, inclined plane, gears, cams
+
+Materials:
+    - Shops
+        + http://www.gizmoszone.com
+        + http://www.dx.com/
+        + http://www.aliexpress.com/
+            --> http://www.aliexpress.com/store/711000
+        + http://www.seeedstudio.com/
+    - Geared motor
+        + GH810136V3L ($10.92 50RPM 1:136.02)
+        + GH810136V3 (100rpm)
+        + GH810264V3L (250rpm)
+        + GH6124S
+        + GM12-N20VA-20
+    - On/Off push switch
+    - 1 or 2 AA batteries with a case
+    - Brass wire (1.0mm diameter)
+    - Brass rods
+    - Stainless steel balls: 7.14mm diameter (9/32inch)
+    - Nylon suspenser CN-2006: http://www.hirosugi.co.jp/products/N/CN.html
+    - Brass counterweights: http://www.originalmind.co.jp/goods/03432
+    - Servo horn/arm
+    - Wood:
+        + Wood sheets
+        + Square profile sticks
+        + Round profile sticks
+    - Bolts and nuts
+    - Gears, pullyes
+
+Tools
+    Ref: https://www.youtube.com/watch?v=AOgKYIpPicw&index=201&list=UUQLeSzI5oBVHxPFz-PFQxMw
+    - Small drilling machine
+    - Small circular saw
+    - Dremel
+    - Stencils
+    - Wire cutter
+    - Tape dispenser
+
+Simulator (Linkage)
+    - Ref: http://blog.rectorsquid.com/linkage-mechanism-designer-and-simulator/
+
+Simulator (Game Blender 3D)
+    - Ref: https://www.youtube.com/channel/UCZaPiuVYQjsaz1ysU37ap2A
+
+Main elements:
+    - Lifter/Elevator
+        + Check this to see many types:
+            Ref: https://www.youtube.com/watch?v=xC0FqSIYoes&index=7&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        + One-stage lifter
+            Ref: https://www.youtube.com/watch?v=GfqVHepEM-s&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        + Two-stage lifter (linkage)
+            Ref: https://www.youtube.com/watch?v=CuhwO9sG1LA&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=xC0FqSIYoes&index=7&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=I7AeCA6xAIE&index=16&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        + TJ (Theo Jansen) lifter
+            Ref: https://www.youtube.com/watch?v=as_ul9h8ELU&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=94
+        + Swinging arm lifter
+            Ref: https://www.youtube.com/watch?v=xm4V7xq41T0&index=53&list=UUQLeSzI5oBVHxPFz-PFQxMw&spfreload=1
+            Ref: https://www.youtube.com/watch?v=4jC4k9T4hsc&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=52
+        + Arm lifter
+            Ref: https://www.youtube.com/watch?v=JKFUqCNCUfg&index=83&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=UYTkdw4upnc
+        + Spiral
+            Ref: https://www.youtube.com/watch?v=sbei-WmA9RA&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        + Wheel
+            Ref: https://www.youtube.com/watch?v=dXdbqGGlnjU (mini marble machine)
+            Ref: https://www.youtube.com/watch?v=r7Ae7VSQsTI&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=49
+            Ref: https://www.youtube.com/watch?v=hAFcfh4EBz0&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=56
+            Ref: https://www.youtube.com/watch?v=HVKvuDXsO2A
+            Ref: https://www.youtube.com/watch?v=ZD1fSthAK2M (how to cut the wheel's circle)
+            Ref: https://www.youtube.com/watch?v=QybnSLSPJNY
+            Ref: https://www.youtube.com/watch?v=Sy6lfRiUEPg
+            Ref: https://www.youtube.com/watch?v=WONsryntzo4&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=80
+            Ref: https://www.youtube.com/watch?v=3OGyLHu24rk
+            Ref: https://www.youtube.com/watch?v=oQYhHKC6hzI
+            Ref: https://www.youtube.com/watch?v=RfsSNQUsn0I
+            Ref: https://www.youtube.com/watch?v=ZF3bCEK20Oo
+        + Zig zag lifter
+            Ref: https://www.youtube.com/watch?v=oNweXjeXgfk&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=34
+            Ref: https://www.youtube.com/watch?v=JnWOmj-qpwU&index=39&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        + Cardan lifter
+            Ref: https://www.youtube.com/watch?v=qlfaafvqHlk&index=31&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        + Stairs lifter
+            Ref: https://www.youtube.com/watch?v=GeBCjQl9g5U&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=213
+            Ref: https://www.youtube.com/watch?v=ysJ1EmTWorM&index=73&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=o3X3YhxYA_o&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=71
+            Ref: https://www.youtube.com/watch?v=MnykWWEsa8E&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=63
+            Ref: https://www.youtube.com/watch?v=ilGFnRmi4CM&index=43&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=PSxv7Rr1yn8&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=24
+            REf: https://www.youtube.com/watch?v=ZD1fSthAK2M
+        + Rotation lifter
+            Ref: https://www.youtube.com/watch?v=UUct9u3IHik&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=59
+            Ref: https://www.youtube.com/watch?v=rr4sQGyAyw4&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=60
+        + Elevator
+            Ref: https://www.youtube.com/watch?v=RsYCoRPoZv0&index=75&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=qHAum0izptU&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=70
+        + Push up lifter
+            Ref: https://www.youtube.com/watch?v=KLGUGZT3tuY&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=87
+            Ref: https://www.youtube.com/watch?v=Ne3QSYNfm8Y&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=86
+        + Catapult
+            Ref: https://www.youtube.com/watch?v=6FLB-FcX0CY&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=115
+            Ref: https://www.youtube.com/watch?v=ELUO1CeQBc8&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=111
+            Ref: https://www.youtube.com/watch?v=aF4-kfVpc54&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=110
+            Ref: https://www.youtube.com/watch?v=3NJ7Fr6VrPU&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=91
+        + Double wheel lifter
+            Ref: https://www.youtube.com/watch?v=4I-n6D8ERNg&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=104
+            Ref: https://www.youtube.com/watch?v=4I-n6D8ERNg&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=104
+        + Rolling ball lifter
+            Ref: https://www.youtube.com/watch?v=ny4KIPmKdWA&index=250&list=UUQLeSzI5oBVHxPFz-PFQxMw
+    - Ball release mechanisms
+        + Ball stopper with weight attached
+            Ref: https://www.youtube.com/watch?v=MYnr3YD3zkU&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=HuLKgHsQzzg&index=64&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=pnqZHyuP8Q4&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=47
+        + Ball passing gives way to waiting ball
+            Ref: https://www.youtube.com/watch?v=BHANIJMgANA&index=9&list=UUQLeSzI5oBVHxPFz-PFQxMw
+            Ref: https://www.youtube.com/watch?v=Gt8XyX7pGpo&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=33
+    - Tracks
+        + solder with normal solder station
+            Ref: https://www.youtube.com/watch?v=1fRfaXsJRHw&list=PL7f_6E63w9dhdurMl9dV6YO53wfZ84Hqr
+    - Fences for balls not to escape
+        Ref: https://www.youtube.com/watch?v=GfqVHepEM-s&index=3&list=UUQLeSzI5oBVHxPFz-PFQxMw
+    - Funnels (can be made with wood spoons)
+        Ref: https://www.youtube.com/watch?v=BHANIJMgANA&index=9&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        Ref: https://www.youtube.com/watch?v=vN7m1fJw3ZY&index=20&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        Ref: https://www.youtube.com/watch?v=4jC4k9T4hsc&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=52
+    - Funnel laddles
+        Ref: https://www.youtube.com/watch?v=HcY5ifpDnwc&index=92&list=UUQLeSzI5oBVHxPFz-PFQxMw
+    - Ball accelerator (inclined plane)
+        Ref: https://www.youtube.com/watch?v=GfqVHepEM-s&index=3&list=UUQLeSzI5oBVHxPFz-PFQxMw
+    - Lateral motion
+        Ref: https://www.youtube.com/watch?v=Qp-J9qF-VRY&index=37&list=UUQLeSzI5oBVHxPFz-PFQxMw
+    - Flip-flop
+        Ref: https://www.youtube.com/watch?v=oP1eIqCFhMo&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=101
+        Ref: https://www.youtube.com/watch?v=zxqeIjwEHNM&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=69
+        Ref: https://www.youtube.com/watch?v=WONsryntzo4&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=80
+        Ref: https://www.youtube.com/watch?v=zWTNizo7ggw&index=90&list=UUQLeSzI5oBVHxPFz-PFQxMw
+    - Small holes/sticks to modularize the whole machine
+    - Walking mechanism
+        Ref: https://www.youtube.com/watch?v=poMAMQVGjTE&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=98
+        Ref: https://www.youtube.com/watch?v=Tp8aK_m3ckc&list=UUQLeSzI5oBVHxPFz-PFQxMw&index=247
+        Ref: https://www.youtube.com/watch?v=kBbYv-o4HLY&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        Ref: https://www.youtube.com/watch?v=WDNrwRBwZEI&list=UUQLeSzI5oBVHxPFz-PFQxMw
+        Ref: https://www.youtube.com/watch?v=RdJt004lYZA&list=UUQLeSzI5oBVHxPFz-PFQxMw
+
+3D printer marble machine
+    - Videos
+        Ref: https://www.youtube.com/watch?v=zhVQzKZB72Q
+        Ref: https://www.youtube.com/watch?v=0wrA-zyLiBg
+        Ref: https://www.youtube.com/watch?v=aXDXTsm0Ruc
+        Ref: https://www.youtube.com/watch?v=4BxeTVLoVOY
+        Ref: https://www.youtube.com/watch?v=q-i7GUO8Nms
+        Ref: https://www.youtube.com/watch?v=Zq10IqQDV9U
+    - Thingverse:
+        Ref: http://www.thingiverse.com/thing:615203
+        Ref: http://www.thingiverse.com/thing:98669
+        Ref: http://www.thingiverse.com/thing:65251
+
+
+My first marble machine
+=======================
+
+Ref: https://www.youtube.com/watch?v=4fRQgvKlpAE (video)
+Ref: http://sangorrin.blogspot.jp/2015/08/my-first-marble-machine.html
+
+List of materials
+    - Battery box (AAAx2) with on-off switch: aitendo 90yen
+    - Potentiometer with knob (regulate speed): aitendo
+    - Stainless steel balls (7.14mm, 9/32inch diameter)
+        + 7mm diameter available at Tokyu hands
+    - Motor:
+        + power with batteries
+            Ref: http://www.precisionmicrodrives.com/tech-blog/2013/02/01/tips-for-powering-motors-with-batteries
+            - Typically: 2 batteries for 3V
+            - runningtime(h) = batterycapacity(mAh)/operatingcurrent(mA)
+                --> 32h = 2300mAh/70mA
+                --> you can add a battery in parallel to extend the runningtime
+        + MOT114A1B (6V 60RPM 12GA, Sengoku 1280yen)
+          Ref: http://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-0PHM
+          [Alt] RA12W0134SY801 (DC3V, 134:1, 100rpm, 1622yen) Ref: http://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-0SDY
+          [Alt] RA250100 (DC3~6V, 100:1, 70rpm, 1622)
+        + Gear for the shaft of the motor with tap (Sengoku)
+		+ Rubber cover (Ishikawa neji)
+        + supporter
+            - M3 spacers: aitendo
+    - CAD design considerations
+        + shape and dimensions of the motor shaft
+        + part to attach the motor
+        + make it in parts that can be mounted/unmounted
+    - Brass wire (1.0mm diameter)
+	- Spring (Muelle, hikibane)
+		+ several types (Ishikawa neji and Tokyu hands)
+    - Brass wire (shinchuu)
+		+ Radio depaato (box shop)
+    
+
